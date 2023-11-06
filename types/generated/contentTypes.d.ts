@@ -677,6 +677,95 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiEventEvent extends Schema.CollectionType {
+  collectionName: 'events';
+  info: {
+    singularName: 'event';
+    pluralName: 'events';
+    displayName: 'event';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.Text;
+    startDate: Attribute.DateTime & Attribute.Required;
+    endDate: Attribute.DateTime;
+    speaker: Attribute.String;
+    speakerImage: Attribute.String;
+    speakerSocialURL: Attribute.String;
+    hackathonSlug: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::event.event',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::event.event',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHackathonHackathon extends Schema.CollectionType {
+  collectionName: 'hackathons';
+  info: {
+    singularName: 'hackathon';
+    pluralName: 'hackathons';
+    displayName: 'hackathon';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    subtitle: Attribute.String;
+    description: Attribute.RichText;
+    endDate: Attribute.DateTime & Attribute.Required;
+    startDate: Attribute.DateTime & Attribute.Required;
+    desktopBanner: Attribute.String & Attribute.Required;
+    mobileBanner: Attribute.String & Attribute.Required;
+    isFeatured: Attribute.Boolean;
+    isRemote: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+    twitter: Attribute.String;
+    website: Attribute.String;
+    instagram: Attribute.String;
+    linkedin: Attribute.String;
+    slug: Attribute.UID<'api::hackathon.hackathon', 'title'> &
+      Attribute.Required;
+    isHackathon: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
+    location: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::hackathon.hackathon',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::hackathon.hackathon',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -693,6 +782,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::event.event': ApiEventEvent;
+      'api::hackathon.hackathon': ApiHackathonHackathon;
     }
   }
 }

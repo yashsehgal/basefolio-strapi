@@ -1,0 +1,76 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hackathons",
+  "info": {
+    "singularName": "hackathon",
+    "pluralName": "hackathons",
+    "displayName": "hackathon",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "endDate": {
+      "type": "datetime",
+      "required": true
+    },
+    "startDate": {
+      "type": "datetime",
+      "unique": false,
+      "required": true
+    },
+    "desktopBanner": {
+      "type": "string",
+      "required": true
+    },
+    "mobileBanner": {
+      "type": "string",
+      "required": true
+    },
+    "isFeatured": {
+      "type": "boolean"
+    },
+    "isRemote": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "twitter": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "instagram": {
+      "type": "string"
+    },
+    "linkedin": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "isHackathon": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "location": {
+      "type": "string"
+    }
+  }
+}
