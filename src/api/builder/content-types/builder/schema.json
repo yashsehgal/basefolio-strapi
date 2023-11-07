@@ -1,0 +1,64 @@
+{
+  "kind": "collectionType",
+  "collectionName": "builders",
+  "info": {
+    "singularName": "builder",
+    "pluralName": "builders",
+    "displayName": "builder",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "bio": {
+      "type": "richtext"
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "required": true
+    },
+    "username": {
+      "type": "string",
+      "required": true
+    },
+    "profileImageURL": {
+      "type": "string"
+    },
+    "twitter": {
+      "type": "string"
+    },
+    "linkedin": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "github": {
+      "type": "string"
+    },
+    "hashnode": {
+      "type": "string"
+    },
+    "medium": {
+      "type": "string"
+    },
+    "instagram": {
+      "type": "string"
+    },
+    "hackathonWon": {
+      "type": "json"
+    },
+    "hackathonParticipations": {
+      "type": "json"
+    }
+  }
+}
