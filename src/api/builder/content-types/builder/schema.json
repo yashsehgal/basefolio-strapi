@@ -22,7 +22,7 @@
     "bio": {
       "type": "richtext"
     },
-    "isFeatured": {
+    "isVerified": {
       "type": "boolean",
       "required": true
     },
@@ -59,6 +59,13 @@
     },
     "hackathonParticipations": {
       "type": "json"
+    },
+    "projects": {
+      "type": "json"
+    },
+    "location": {
+      "type": "string",
+      "required": true
     }
   }
 }

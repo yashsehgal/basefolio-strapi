@@ -88,6 +88,12 @@
     },
     "github": {
       "type": "string"
+    },
+    "builders": {
+      "type": "json"
+    },
+    "projects": {
+      "type": "json"
     }
   }
 }
