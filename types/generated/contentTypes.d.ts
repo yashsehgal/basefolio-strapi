@@ -618,6 +618,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     profileAvatar: Attribute.String;
     firstName: Attribute.String & Attribute.Required;
     lastName: Attribute.String;
+    bio: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
