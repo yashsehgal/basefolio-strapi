@@ -77,6 +77,15 @@
     },
     "bio": {
       "type": "richtext"
+    },
+    "socialLinks": {
+      "type": "json"
+    },
+    "education": {
+      "type": "json"
+    },
+    "experience": {
+      "type": "json"
     }
   }
 }

@@ -28,7 +28,8 @@
     },
     "username": {
       "type": "string",
-      "required": true
+      "required": true,
+      "unique": true
     },
     "profileImageURL": {
       "type": "string"
@@ -66,6 +67,10 @@
     "location": {
       "type": "string",
       "required": true
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "required": false
     }
   }
 }

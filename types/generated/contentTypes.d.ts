@@ -619,6 +619,9 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     firstName: Attribute.String & Attribute.Required;
     lastName: Attribute.String;
     bio: Attribute.RichText;
+    socialLinks: Attribute.JSON;
+    education: Attribute.JSON;
+    experience: Attribute.JSON;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -696,7 +699,7 @@ export interface ApiBuilderBuilder extends Schema.CollectionType {
     lastName: Attribute.String;
     bio: Attribute.RichText;
     isVerified: Attribute.Boolean & Attribute.Required;
-    username: Attribute.String & Attribute.Required;
+    username: Attribute.String & Attribute.Required & Attribute.Unique;
     profileImageURL: Attribute.String;
     twitter: Attribute.String;
     linkedin: Attribute.String;
@@ -709,6 +712,7 @@ export interface ApiBuilderBuilder extends Schema.CollectionType {
     hackathonParticipations: Attribute.JSON;
     projects: Attribute.JSON;
     location: Attribute.String & Attribute.Required;
+    isFeatured: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -720,6 +724,68 @@ export interface ApiBuilderBuilder extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::builder.builder',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCollegeCollege extends Schema.CollectionType {
+  collectionName: 'colleges';
+  info: {
+    singularName: 'college';
+    pluralName: 'colleges';
+    displayName: 'college';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::college.college',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::college.college',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCompanyCompany extends Schema.CollectionType {
+  collectionName: 'companies';
+  info: {
+    singularName: 'company';
+    pluralName: 'companies';
+    displayName: 'company';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::company.company',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::company.company',
       'oneToOne',
       'admin::user'
     > &
@@ -876,6 +942,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::builder.builder': ApiBuilderBuilder;
+      'api::college.college': ApiCollegeCollege;
+      'api::company.company': ApiCompanyCompany;
       'api::event.event': ApiEventEvent;
       'api::hackathon.hackathon': ApiHackathonHackathon;
       'api::question.question': ApiQuestionQuestion;
